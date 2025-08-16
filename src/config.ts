@@ -6,7 +6,7 @@ export const siteConfig = {
   social: {
     email: "guerand22004@gmail.com",
     linkedin: "https://www.linkedin.com/in/guerand-dewell-a3868a318",
-    github: "https://github.com/SteedStone",
+    github: "https://github.com/DewellGuerand",
   },
   aboutMe:
     "Engineering student in Applied Mathematics and Computer Science. Passionate about math since childhood, constantly motivated to learn. Strong analytical and problem-solving skills demonstrated through various projects. Pursuing a master's in Mathematical Engineering next year ",
