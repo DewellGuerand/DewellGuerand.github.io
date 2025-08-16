@@ -36,7 +36,7 @@ export const siteConfig = {
     {
       name: "Financial Calculator",
       description:
-        "A GUI-based financial calculator built with Python and CustomTkinter for computing option premiums and FTP (Funds Transfer Pricing) rates for mortgage products.",
+        "A GUI-based financial calculator built with Python and CustomTkinter for computing FTP (Funds Transfer Pricing) rates for mortgage products.",
       link: "https://github.com/SteedStone/NJS",
       skills: ["Python"],
     },
