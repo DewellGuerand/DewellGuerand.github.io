@@ -1,0 +1,110 @@
+---
+import { siteConfig } from "../config";
+
+// Programming languages with fallback approach
+const programmingLanguages = [
+  {
+    name: "Python",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    fallback: "🐍",
+    color: "#3776ab"
+  },
+  {
+    name: "C",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    fallback: "C",
+    color: "#00599c"
+  },
+  {
+    name: "Java",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    fallback: "☕",
+    color: "#ed8b00"
+  },
+  {
+    name: "JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    fallback: "JS",
+    color: "#f7df1e"
+  },
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    fallback: "TS",
+    color: "#007acc"
+  },
+  {
+    name: "Dart",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+    fallback: "🎯",
+    color: "#0175c2"
+  }
+];
+---
+
+<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-8 xl:p-12">
+  <div>
+    <div class="space-y-8">
+      <div>
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900"
+        >
+          About Me
+        </h2>
+        <div
+          class="w-[75px] h-[5px] mt-2 rounded-full"
+          style={`background-color: ${siteConfig.accentColor}`}
+        >
+        </div>
+      </div>
+      <div class="space-y-8">
+        <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-gray-600">
+          {siteConfig.aboutMe}
+        </p>
+        <!-- Programming Languages Section with Fallback -->
+        <div class="pt-4">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Programming Languages</h3>
+          <div class="flex flex-wrap gap-4">
+            {
+              programmingLanguages.map((lang) => (
+                <div 
+                  class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200 flex items-center justify-center group min-w-[80px] h-[80px]"
+                  title={lang.name}
+                >
+                  <img 
+                    src={lang.icon} 
+                    alt={`${lang.name} logo`} 
+                    class="w-12 h-12 group-hover:scale-110 transition-transform duration-200"
+                    loading="lazy"
+                    onError="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div 
+                    class="hidden items-center justify-center w-12 h-12 text-2xl font-bold rounded"
+                    style={`background-color: ${lang.color}20; color: ${lang.color}`}
+                  >
+                    {lang.fallback}
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <!-- Skills from config (text only) -->
+        {siteConfig.skills && siteConfig.skills.length > 0 && (
+          <div class="pt-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Technical Skills</h3>
+            <div class="flex flex-wrap gap-3">
+              {
+                siteConfig.skills.map((skill: string) => (
+                  <span class="px-3 py-1.5 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors duration-200">
+                    {skill}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+---
+import { siteConfig } from "../config";
+
+// Programming language icon mapping
+const getSkillIcon = (skillName: string) => {
+  const icons: Record<string, string> = {
+    "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "C": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    "Java": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    "Node.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    "Dart": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+    "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    "Prisma": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
+  };
+  return icons[skillName] || null;
+};
+---
+
+<div
+  id="hero"
+  class="relative isolate overflow-hidden bg-white py-8 lg:py-0 h-full flex items-center"
+  style={`--accent-color: ${siteConfig.accentColor}`}
+>
+  <!-- Simple background -->
+  <div class="absolute inset-0 -z-10 bg-gray-50"></div>
+  <!-- Subtle grid pattern -->
+  <svg
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 size-full stroke-gray-200 opacity-30"
+  >
+    <defs>
+      <pattern
+        x="0"
+        y="0"
+        id="grid-pattern"
+        width={40}
+        height={40}
+        patternUnits="userSpaceOnUse"
+      >
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke-width="1"></path>
+      </pattern>
+    </defs>
+    <rect
+      fill="url(#grid-pattern)"
+      width="100%"
+      height="100%"
+    ></rect>
+  </svg>
+  <div class="w-full mx-auto p-4 sm:p-6 lg:p-8">
+    <div>
+     
+      <h1
+        class="mt-4 sm:mt-6 md:mt-8 text-pretty text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-gray-800 animate-fade-in animation-delay-200"
+      >
+        <span style={{ color: siteConfig.accentColor }}
+          >{siteConfig.name}</span
+        >
+      </h1>
+      <p
+        class="mt-4 sm:mt-6 md:mt-8 text-pretty text-base sm:text-lg md:text-xl/8 font-medium text-gray-600 animate-fade-in animation-delay-400"
+      >
+        {siteConfig.title}
+      </p>
+      
+      <!-- About Me Section -->
+      <div class="mt-8 lg:mt-12 space-y-6 animate-fade-in animation-delay-600">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">About Me</h3>
+          <p class="text-sm sm:text-base leading-relaxed text-gray-600">
+            {siteConfig.aboutMe}
+          </p>
+        </div>
+        
+        <!-- Skills -->
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-3">Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            {siteConfig.skills.map((skill: string) => {
+              const iconUrl = getSkillIcon(skill);
+              
+              return (
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-gray-100 text-gray-800 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors duration-200">
+                  {iconUrl && (
+                    <img 
+                      src={iconUrl} 
+                      alt={`${skill} logo`} 
+                      class="w-4 h-4"
+                      loading="lazy"
+                    />
+                  )}
+                  <span>{skill}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+</style>

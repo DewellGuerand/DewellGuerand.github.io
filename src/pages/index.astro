@@ -1,0 +1,63 @@
+---
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Experience from "../components/Experience.astro";
+import Education from "../components/Education.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../config";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={siteConfig.description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{siteConfig.name} - {siteConfig.title}</title>
+  </head>
+  <body>
+    <!-- Desktop Layout: Split Screen -->
+    <div class="hidden lg:flex h-screen">
+      <!-- Left Sidebar - Fixed -->
+      <div class="w-1/2 flex flex-col overflow-hidden">
+        <Header />
+        <div class="flex-1 overflow-y-auto">
+          <Hero />
+        </div>
+      </div>
+      
+      <!-- Right Content - Scrollable -->
+      <div class="w-1/2 overflow-y-auto">
+         <Education />
+
+        <Projects />
+        <Experience />
+        <Education />
+      </div>
+    </div>
+
+    <!-- Mobile Layout: Stacked -->
+    <div class="lg:hidden">
+      <Header />
+      <div class="pt-16"> <!-- Add padding for smaller fixed header on mobile -->
+                <Education />
+
+        <Hero />
+        <Projects />
+        <Experience />
+      </div>
+    </div>
+        <Footer />
+
+  </body>
+</html>
