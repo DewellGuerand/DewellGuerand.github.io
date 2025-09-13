@@ -16,28 +16,28 @@ export const siteConfig = {
       name: "Tracking a Lorenz particle",
       description:
         "This project estimate the position of a Lorenz attractor particle over time using a particle filter.",
-      link: "https://github.com/SteedStone/Stochastic-Processes-Project",
+      link: "https://github.com/DewellGuerand/Stochastic-Processes-Project",
       skills: ["Python"],
     },
     {
       name: "Finite element project",
       description:
         "This project involves developing a complete finite element analysis application for solving 2D linear elasticity problems in engineering structures. The program consists of three main components.",
-      link: "https://github.com/SteedStone/Finite-Element-Project",
+      link: "https://github.com/DewellGuerand/Finite-Element-Project",
       skills: ["C" , "Python"  ],
     },
     {
       name: "Full-stack e-commerce platform",
       description:
         "This project is a full-stack e-commerce platform for French artisanal bakeries, built with Next.js, TypeScript, and PostgreSQL, featuring online ordering, real-time inventory management, and multi-location support.",
-      link: "https://github.com/SteedStone/NJS",
+      link: "https://github.com/DewellGuerand/NJS",
       skills: ["TypeScript", "Next.js", "PostgreSQL" ,"Prisma"],
     },
     {
       name: "Financial Calculator",
       description:
         "A GUI-based financial calculator built with Python and CustomTkinter for computing FTP (Funds Transfer Pricing) rates for mortgage products.",
-      link: "https://github.com/SteedStone/NJS",
+      link: "https://github.com/DewellGuerand/Financial-project",
       skills: ["Python"],
     },
   ],
