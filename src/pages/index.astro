@@ -16,7 +16,52 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
     <meta name="description" content={siteConfig.description} />
+    <meta name="keywords" content="Guerand Dewell, Mathematical Engineer, Portfolio, Python, Java, C, Applied Mathematics, Computer Science" />
+    <meta name="author" content={siteConfig.name} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dewellguerand.github.io/" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={`${siteConfig.name} - ${siteConfig.title}`} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dewellguerand.github.io/" />
+    <meta property="og:image" content="https://dewellguerand.github.io/og-image.jpg" />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${siteConfig.name} - ${siteConfig.title}`} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:image" content="https://dewellguerand.github.io/og-image.jpg" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "${siteConfig.name}",
+      "jobTitle": "${siteConfig.title}",
+      "description": "${siteConfig.description}",
+      "url": "https://dewellguerand.github.io/",
+      "email": "${siteConfig.social.email}",
+      "sameAs": [
+        "${siteConfig.social.linkedin}",
+        "${siteConfig.social.github}"
+      ]
+    }
+    </script>
+
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content={siteConfig.accentColor} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content={siteConfig.name} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
