@@ -1,0 +1,442 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Dewell Guerand's CV},
+    pdfauthor={Dewell Guerand},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Dewell Guerand
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{Belgium}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:guerand22004@gmail.com}{guerand22004@gmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+90-541-999-99-99}{+32 476 82 08 04}}%        
+        
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/DewellGuerand}{github.com/DewellGuerand}}%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/guerand-dewell-a3868a318/}{linkedin.com/GuerandDewell}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+
+    
+
+    \section{Education}
+
+
+        \begin{twocolentry}{
+            Sept 2025 – Present
+        }
+            \textbf{MEng}, Louvain School of Engineering (EPL)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Major: Applied Mathematics
+            \end{highlights}
+        \end{onecolentry}
+        
+        \begin{twocolentry}{
+            Sept 2022 – June 2025
+        }
+            \textbf{BEng}, Louvain School of Engineering (EPL)\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Major: Applied Mathematics, Minor: Computer Science
+                \item Graduated Cum Laude
+            \end{highlights}
+        \end{onecolentry}
+        \begin{twocolentry}{
+            Sept 2016 - June 2022
+        }
+            \textbf{Lycée de Berlaymont}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Graduated with honors
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Experience}
+
+
+
+        
+        \begin{twocolentry}{
+            Oct 2025 - Present
+        }
+            \textbf{Quant analyst}, LSM Investment Club\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Conducted quantitative analysis to support investment decisions.
+                \item Collaborated with team members to develop trading strategies.
+            \end{highlights}
+        \end{onecolentry}
+        % \begin{twocolentry}{
+        %     From September 2023 
+        % }
+        %     \textbf{Private Tutor}, Belgium\end{twocolentry}
+
+        % \vspace{0.10 cm}
+        % \begin{onecolentry}
+        %     \begin{highlights}
+        %         \item Provided mathematics and science lessons for middle school students.
+        %     \end{highlights}
+        % \end{onecolentry}
+
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{twocolentry}{
+    %         June 2022
+    %     }
+    %         \textbf{Intern}, Engie\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Organized and classified work disability files for improved physician accessibility.
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+
+    
+    
+    
+    \section{Projects}
+
+
+
+        
+        \begin{twocolentry}{
+            \href{https://github.com/DewellGuerand}{github.com/DewellGuerand}
+        }
+            \textbf{GUI}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed an API that can be downloaded to compute the payment needed by the bank for a loan
+                \item Tools: Python (Tkinter library)
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+    
+
+
+
+        
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Energy Optimisation}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed a model to determine optimal wind turbine placements for precise energy production targets
+                \item Tools: Python
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Memory management}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Implemented a custom malloc in C for memory management based on specific allocation policies
+                \item Tools: C, bash
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+        \vspace{0.2 cm}
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Flight optimisation}\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Created an API and the backend to compute the minimal distance required to reach a certain destination based on preference of the passenger
+                \item Tools: Python, Flutter (Dart)
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+        
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Full-stack e-commerce platform}\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Full-stack e-commerce platform for French artisanal bakeries, built with Next.js, TypeScript, and PostgreSQL, featuring online ordering, real-time inventory management, and multi-location support
+                \item Tools: Next.js, TypeScript, PostgreSQL, Prisma
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+        
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Tracking a Lorenz particle}\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Estimated the position of a Lorenz attractor particle over time using a particle filter for stochastic process analysis
+                \item Tools: Python
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+         
+        
+        \begin{twocolentry}{
+            
+        }
+            \textbf{Finite element project}\end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Developed a complete finite element analysis application for solving 2D linear elasticity problems in engineering structures with mesh generation, solver, and visualization components
+                \item Tools: C, Python
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.2 cm}
+    
+    \section{Personnal Achievement}
+        \begin{onecolentry}
+            \textbf{Senior prom trophy} Finished 13th out of 120 schools in the Walloon region in a 40 km trek.
+        \end{onecolentry}
+        \begin{onecolentry}
+            \textbf{Hockey} : Played hockey for over 15 years, balancing sports with academic responsibilities. teaching lessons to the youngest players at the local club.
+        \end{onecolentry}
+        \begin{onecolentry}
+            \textbf{Market Investment} Developed an interest in the markets and started investing my money, making some profitable investments.
+        \end{onecolentry}
+        \begin{onecolentry}
+            \textbf{Sport activities} Practises sport daily and has run a half marathon (Brussels 20 km)
+        \end{onecolentry}
+        \begin{onecolentry}
+            \textbf{Camp cook} Managed meal preparation and food logistics for a large scout unit.
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        
+        
+
+        
+
+    
+    \section{Technical Skills}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{Languages:} C, Java, Python, Oz, Assembly, Erlang, Bash, Dart
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Software :} Git, Overleaf, MATLAB
+        \end{onecolentry}
+    \section{Language levels}
+    \begin{itemize}
+        \item \textbf{French} : C2 (Native speakers) 
+        \item \textbf{English} : C1
+        \item \textbf{Dutch} : B2 
+        
+    \end{itemize}
+
+
+
+    
+
+\end{document}
