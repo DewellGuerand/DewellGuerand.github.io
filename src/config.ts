@@ -76,7 +76,7 @@ export const siteConfig = {
   ],
   education: [
     {
-      school: "Louvain School of Engineering",
+      school: "Polytechnic school of Louvain",
       degree: "MEng",
       dateRange: "Oct 2025 - Present",
       achievements: [
@@ -84,7 +84,7 @@ export const siteConfig = {
       ],
     },
     {
-      school: "Louvain School of Engineering",
+      school: "Polytechnic school of Louvain",
       degree: "BEng",
       dateRange: "Sept 2022 - June 2025",
       achievements: [
