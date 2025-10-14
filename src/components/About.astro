@@ -61,28 +61,41 @@ const programmingLanguages = [
         <p class="text-base sm:text-lg lg:text-xl leading-relaxed text-gray-600">
           {siteConfig.aboutMe}
         </p>
-        <!-- Programming Languages Section with Fallback -->
+        <!-- Programming Languages Section with Progress Bars -->
         <div class="pt-4">
           <h3 class="text-lg font-semibold text-gray-800 mb-4">Programming Languages</h3>
-          <div class="flex flex-wrap gap-4">
+          <div class="space-y-6">
             {
               programmingLanguages.map((lang) => (
-                <div 
-                  class="p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200 flex items-center justify-center group min-w-[80px] h-[80px]"
-                  title={lang.name}
-                >
-                  <img 
-                    src={lang.icon} 
-                    alt={`${lang.name} logo`} 
-                    class="w-12 h-12 group-hover:scale-110 transition-transform duration-200"
-                    loading="lazy"
-                    onError="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                <div class="relative pl-8 border-l-2 group" style={`border-color: ${siteConfig.accentColor}`}>
+                  {/* Timeline dot */}
+                  <div
+                    class="absolute -left-[9px] top-0 w-4 h-4 rounded-full transition-all duration-300"
+                    style={`background-color: ${siteConfig.accentColor}`}
                   />
-                  <div 
-                    class="hidden items-center justify-center w-12 h-12 text-2xl font-bold rounded"
-                    style={`background-color: ${lang.color}20; color: ${lang.color}`}
-                  >
-                    {lang.fallback}
+
+                  {/* Language card */}
+                  <div class="block relative p-4 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-lg hover:border-gray-300">
+                    <div class="flex items-center gap-4">
+                      <div class="flex-shrink-0 w-12 h-12 flex items-center justify-center">
+                        <img
+                          src={lang.icon}
+                          alt={`${lang.name} logo`}
+                          class="w-10 h-10 group-hover:scale-110 transition-transform duration-200"
+                          loading="lazy"
+                          onError="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <div
+                          class="hidden items-center justify-center w-10 h-10 text-xl font-bold rounded"
+                          style={`background-color: ${lang.color}20; color: ${lang.color}`}
+                        >
+                          {lang.fallback}
+                        </div>
+                      </div>
+                      <div class="flex-grow">
+                        <h4 class="text-base sm:text-lg font-semibold text-gray-900">{lang.name}</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))

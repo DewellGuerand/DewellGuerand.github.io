@@ -8,7 +8,7 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
 
 <header
   id="header"
-  class="lg:relative lg:z-auto lg:bg-transparent p-4 lg:p-6 pb-0 fixed top-0 left-0 right-0 z-50 md:block lg:block transition-all duration-300"
+  class="lg:relative lg:z-auto lg:bg-transparent p-4 lg:p-6 pb-0 fixed top-0 left-0 right-0 z-50 md:block lg:block transition-all duration-300 bg-white"
 >
   <nav class="max-w-xl mx-auto lg:max-w-none">
     <div class="flex items-center justify-between lg:justify-start lg:gap-8">
@@ -187,9 +187,9 @@ const hasEducation = siteConfig.education && siteConfig.education.length > 0;
     const header = document.getElementById("header");
     if (window.innerWidth < 1024) { // Only for mobile/tablet
       if (window.scrollY > 100) {
-        header?.classList.add("bg-white/80", "backdrop-blur-sm");
+        header?.classList.add("shadow-md");
       } else {
-        header?.classList.remove("bg-white/80", "backdrop-blur-sm");
+        header?.classList.remove("shadow-md");
       }
     }
   });
