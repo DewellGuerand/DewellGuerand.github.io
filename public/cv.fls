@@ -195,6 +195,7 @@ INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi9.tfm
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmmi6.tfm
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy9.tfm
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\public\lm\lmsy6.tfm
+INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\bitstrea\charter\bchri8t.tfm
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\vf\bitstrea\charter\bchr8t.vf
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\bitstrea\charter\bchr8r.tfm
 INPUT C:\Users\guera\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
@@ -206,11 +207,15 @@ INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\vf\bitstrea\charter\bch
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\bitstrea\charter\bchb8r.tfm
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\vf\bitstrea\charter\bchb8t.vf
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\bitstrea\charter\bchb8r.tfm
+INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\vf\bitstrea\charter\bchri8t.vf
+INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\tfm\bitstrea\charter\bchri8r.tfm
 INPUT cv.aux
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchb8a.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchb8a.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchr8a.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchr8a.pfb
+INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchri8a.pfb
+INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\bitstrea\charter\bchri8a.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy10.pfb
 INPUT C:\Users\guera\AppData\Local\Programs\MiKTeX\fonts\type1\public\lm\lmsy9.pfb

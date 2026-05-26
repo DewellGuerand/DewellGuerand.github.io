@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.8)  6 MAR 2026 17:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.8)  6 MAY 2026 16:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -386,30 +386,30 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 ) (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\charter.sty
 Package: charter 2020/03/25 PSNFSS-v9.3 (P.Dyballa) 
 )
-LaTeX Font Info:    Trying to load font information for T1+bch on input line 154.
+LaTeX Font Info:    Trying to load font information for T1+bch on input line 121.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1bch.fd
 File: t1bch.fd 2004/10/18 font definitions for T1/bch.
 ) (cv.aux)
 \openout1 = `cv.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 154.
-LaTeX Font Info:    ... okay on input line 154.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 121.
+LaTeX Font Info:    ... okay on input line 121.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -419,19 +419,19 @@ LaTeX Font Info:    ... okay on input line 154.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
-* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* h-part:(L,W,R)=(42.67912pt, 528.93675pt, 42.67912pt)
+* v-part:(T,H,B)=(34.14322pt, 726.68355pt, 34.14322pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=500.484pt
-* \textheight=681.15898pt
-* \oddsidemargin=-15.36449pt
-* \evensidemargin=-15.36449pt
-* \topmargin=-52.36449pt
+* \textwidth=528.93675pt
+* \textheight=726.68355pt
+* \oddsidemargin=-29.59087pt
+* \evensidemargin=-29.59087pt
+* \topmargin=-75.12677pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=0.0pt
-* \footskip=28.45274pt
+* \footskip=22.76228pt
 * \marginparwidth=65.0pt
 * \marginparsep=11.0pt
 * \columnsep=4.26773pt
@@ -459,46 +459,39 @@ LaTeX Font Info:    ... okay on input line 154.
 \makeMPintoPDFobject=\count336
 \everyMPtoPDFconversion=\toks32
 )
-Package hyperref Info: Link coloring ON on input line 154.
+Package hyperref Info: Link coloring ON on input line 121.
 \ANDbox=\box66
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 160.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 127.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 160.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 127.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 160.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 127.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 160.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 127.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 160.
+(Font)              <10> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 160.
+(Font)              <7> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 160.
+(Font)              <5> on input line 127.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 201.
+(Font)              <9> on input line 156.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 201.
+(Font)              <6> on input line 156.
 
 
 [1
 
-{C:/Users/guera/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.441 \end{document}
-                     [2] 
+{C:/Users/guera/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}{C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 
 Package lastpage Warning: \@currentHpage is
@@ -512,17 +505,17 @@ L3 programming layer <2025-10-09>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15442 strings out of 468080
- 262830 string characters out of 5425772
- 695785 words of memory out of 5000000
- 43910 multiletter control sequences out of 15000+600000
- 660234 words of font info for 66 fonts, out of 8000000 for 9000
+ 15444 strings out of 468080
+ 262919 string characters out of 5425772
+ 693664 words of memory out of 5000000
+ 43911 multiletter control sequences out of 15000+600000
+ 663281 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,402b,461s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb>
-Output written on cv.pdf (2 pages, 50966 bytes).
+ 75i,7n,79p,402b,459s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchri8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb>
+Output written on cv.pdf (1 page, 60975 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 8 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 500000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
