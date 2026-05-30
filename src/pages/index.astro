@@ -5,6 +5,7 @@ import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import Experience from "../components/Experience.astro";
 import Education from "../components/Education.astro";
+import Achievements from "../components/Achievements.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
@@ -93,10 +94,10 @@ import "../styles/global.css";
       
       <!-- Right Content - Scrollable -->
       <div class="w-1/2 overflow-y-auto">
-         <Education />
-
+        <Education />
         <Projects />
         <Experience />
+        <Achievements />
       </div>
     </div>
 
@@ -110,9 +111,10 @@ import "../styles/global.css";
         <Education />
         <Projects />
         <Experience />
+        <Achievements />
       </div>
     </div>
-        <Footer />
+    <Footer />
 
   </body>
 </html>
