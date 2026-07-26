@@ -25,7 +25,7 @@ export const siteConfig = {
       skills: ["Git", "Overleaf", "Typst"],
     },
   ],
-  skills: ["Python", "C", "C++", "Java", "Dart", "Bash", "Julia", "NumPy", "SciPy", "Matplotlib", "Pandas", "TensorFlow", "scikit-learn", "Git"],
+  skills: ["Python", "C", "C++", "Java", "Bash", "Julia", "NumPy", "SciPy", "Matplotlib", "Pandas", "Git"],
   languages: [
     { name: "French", level: "C2", note: "Native" },
     { name: "English", level: "C1", note: "IELTS 7.0" },
@@ -67,13 +67,6 @@ export const siteConfig = {
       link: "https://github.com/DewellGuerand/Stochastic-Processes-Project",
       skills: ["Python"],
     },
-    {
-      name: "Financial Calculator – FTP Rates",
-      description:
-        "GUI-based financial calculator built with Python and CustomTkinter for computing Funds Transfer Pricing (FTP) rates for mortgage products.",
-      link: "https://github.com/DewellGuerand/Financial-project",
-      skills: ["Python"],
-    },
   ],
   experience: [
     {
@@ -89,11 +82,13 @@ export const siteConfig = {
   ],
   education: [
     {
-      school: "CentraleSupélec, Université Paris-Saclay",
+      school: "CentraleSupélec, Université Paris-Saclay ",
       degree: "MEng Double Degree",
       dateRange: "Aug 2026 – June 2028",
       achievements: [
         "Engineering cycle – T.I.M.E (Top International Managers in Engineering)",
+        "Ranked 2nd in Mathematics worldwide",
+
       ],
     },
     {
