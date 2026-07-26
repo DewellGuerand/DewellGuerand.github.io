@@ -14,11 +14,11 @@ export const siteConfig = {
   skillGroups: [
     {
       label: "Programming",
-      skills: ["Python", "C", "C++", "Java", "Dart", "Bash", "Julia"],
+      skills: ["Python", "C", "C++", "Java", "Bash", "Julia"],
     },
     {
       label: "Libraries",
-      skills: ["NumPy", "SciPy", "Matplotlib", "Pandas", "TensorFlow", "scikit-learn"],
+      skills: ["NumPy", "SciPy", "Matplotlib", "Pandas"],
     },
     {
       label: "Tools",
