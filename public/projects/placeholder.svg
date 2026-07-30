@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Placeholder media">
+  <rect width="800" height="450" fill="#f3f4f6"/>
+  <rect x="1" y="1" width="798" height="448" fill="none" stroke="#d1d5db" stroke-width="2" stroke-dasharray="10 8"/>
+  <g fill="#9ca3af" font-family="'IBM Plex Mono', monospace" text-anchor="middle">
+    <text x="400" y="210" font-size="34" fill="#6b7280">Add your screenshot here</text>
+    <text x="400" y="252" font-size="18">Drop images / video in /public/projects/</text>
+  </g>
+  <g stroke="#9ca3af" stroke-width="3" fill="none">
+    <circle cx="400" cy="120" r="26"/>
+    <path d="M392 120 l16 0 M400 112 l0 16"/>
+  </g>
+</svg>
