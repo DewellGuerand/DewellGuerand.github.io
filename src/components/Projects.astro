@@ -347,13 +347,26 @@ const previewOf = (project: any) => {
       renderMath(modal);
     };
 
+    // The whole section is rendered twice (desktop split layout and mobile
+    // stacked layout), so every modal id exists twice. getElementById would
+    // always return the desktop copy, which is display:none on mobile — walk up
+    // from the button instead so we open the copy in the same layout.
+    const modalForButton = (btn: HTMLElement, id: string) => {
+      const selector = `.project-modal[id="${CSS.escape(id)}"]`;
+      for (let el = btn.parentElement; el; el = el.parentElement) {
+        const found = el.querySelector<HTMLElement>(selector);
+        if (found) return found;
+      }
+      return null;
+    };
+
     openButtons.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
         const id = btn.getAttribute("data-project-modal");
         if (!id) return;
-        const modal = document.getElementById(id);
+        const modal = modalForButton(btn, id);
         if (modal) openModal(modal);
       });
     });

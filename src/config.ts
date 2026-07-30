@@ -44,7 +44,6 @@ export const siteConfig = {
         {
           type: "video",
           src: "/projects/Story.mp4",
-          caption: "Simulated short-rate paths vs. calibrated mean-reversion curve",
         },
       ],
     },
@@ -60,7 +59,6 @@ export const siteConfig = {
         {
           type: "video",
           src: "/projects/gmab_pricing.mp4",
-          caption: "Monte Carlo vs. analytical price convergence",
         },
       ],
       report: "/projects/report_lactu.pdf",
@@ -78,7 +76,6 @@ export const siteConfig = {
         {
           type: "image",
           src: "/projects/extreme_target_images.png",
-          caption: "Confusion matrix and ROC curves",
         },
       ],
       report: "/projects/LELEC2870_Project (9).pdf",
@@ -96,7 +93,6 @@ export const siteConfig = {
         {
           type: "video",
           src: "/projects/video_hex (4).mp4",
-          caption: "Mesh and computed stress field",
         },
       ],
       report: "/projects/finite-element-report.pdf",
@@ -113,7 +109,6 @@ export const siteConfig = {
         {
           type: "video",
           src: "/projects/LorenzAttractor.mp4",
-          caption: "Estimated vs. true trajectory on the Lorenz attractor",
         },
       ],
     },
