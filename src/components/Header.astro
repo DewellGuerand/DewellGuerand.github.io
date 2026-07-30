@@ -9,10 +9,10 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
 
 <header
   id="header"
-  class="lg:relative lg:z-auto lg:bg-transparent p-4 lg:p-6 pb-0 fixed top-0 left-0 right-0 z-50 md:block lg:block transition-all duration-300 bg-white"
+  class="lg:relative lg:z-auto lg:bg-transparent p-4 lg:p-6 pb-3 lg:pb-0 fixed top-0 left-0 right-0 z-50 md:block lg:block transition-all duration-300 bg-white"
 >
   <nav class="max-w-xl mx-auto lg:max-w-none">
-    <div class="flex items-center justify-between lg:justify-start lg:gap-8">
+    <div class="flex flex-wrap items-center justify-between gap-y-2 lg:justify-start lg:gap-8">
       <!-- Navigation Links -->
       <ul class="flex items-center gap-3 lg:gap-4 justify-center lg:justify-start flex-wrap">
       {
@@ -68,7 +68,7 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
           href="/cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors font-medium"
+          class="inline-block bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors font-medium"
         >
           View CV
         </a>
@@ -195,9 +195,32 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
 </header>
 
 <script>
+  // The header and every section are rendered twice (desktop split layout and
+  // mobile stacked layout), so IDs are duplicated. getElementById would return
+  // the first match, which is the hidden desktop copy on mobile: always look up
+  // the copy that is actually visible.
+  function visibleById(id: string): HTMLElement | undefined {
+    const matches = document.querySelectorAll<HTMLElement>(`[id="${CSS.escape(id)}"]`);
+    return Array.from(matches).find((el) => el.getClientRects().length > 0);
+  }
+
+  // The mobile header is fixed, so the page below has to reserve its height.
+  // That height varies (the nav wraps on narrow screens), so publish it.
+  function publishHeaderHeight() {
+    const header = visibleById("header");
+    document.documentElement.style.setProperty(
+      "--header-h",
+      `${header?.offsetHeight ?? 0}px`
+    );
+  }
+  publishHeaderHeight();
+  window.addEventListener("resize", publishHeaderHeight);
+  document.addEventListener("DOMContentLoaded", publishHeaderHeight);
+  window.addEventListener("load", publishHeaderHeight);
+
   // Handle scrolling for mobile layout
   window.addEventListener("scroll", () => {
-    const header = document.getElementById("header");
+    const header = visibleById("header");
     if (window.innerWidth < 1024) { // Only for mobile/tablet
       if (window.scrollY > 100) {
         header?.classList.add("shadow-md");
@@ -212,11 +235,13 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
     const navLinks = document.querySelectorAll('a[href^="#"]');
     navLinks.forEach(link => {
       link.addEventListener("click", (e) => {
-        e.preventDefault();
         const targetId = link.getAttribute("href")?.substring(1);
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement && window.innerWidth >= 1024) {
+        if (!targetId) return;
+        const targetElement = visibleById(targetId);
+        if (!targetElement) return;
+        e.preventDefault();
+
+        if (window.innerWidth >= 1024) {
           // For desktop: scroll within the right panel
           const rightPanel = document.querySelector('.lg\\:flex .w-1\\/2.overflow-y-auto');
           if (rightPanel) {
@@ -225,11 +250,16 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
               top: elementTop - 20,
               behavior: 'smooth'
             });
+            return;
           }
-        } else if (targetElement) {
-          // For mobile: normal scroll
-          targetElement.scrollIntoView({ behavior: 'smooth' });
         }
+
+        // For mobile: scroll the page, leaving room for the fixed header
+        const headerHeight = visibleById("header")?.offsetHeight ?? 0;
+        window.scrollTo({
+          top: targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 8,
+          behavior: 'smooth'
+        });
       });
     });
   });

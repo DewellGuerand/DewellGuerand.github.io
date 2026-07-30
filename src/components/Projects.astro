@@ -1,6 +1,23 @@
 ---
 import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+
+const hasDiscover = (project: any) =>
+  (project.details && project.details.length > 0) ||
+  (project.media && project.media.length > 0) ||
+  (project.report && project.report.length > 0);
+
+const previewOf = (project: any) => {
+  const first = project.media && project.media.length > 0 ? project.media[0] : null;
+  if (!first) return null;
+  const isVideo = first.type === "video";
+  return {
+    isVideo,
+    src: first.src,
+    poster: isVideo ? first.poster : undefined,
+    count: project.media.length,
+  };
+};
 ---
 
 {
@@ -21,27 +38,28 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
           <div>
             <div class="space-y-8">
               {siteConfig.projects.map((project, index) => {
-                const Component = project.link ? "a" : "div";
-                const linkProps = project.link
-                  ? {
-                      href: project.link,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }
-                  : {};
+                const discover = hasDiscover(project);
+                const preview = previewOf(project);
+                const modalId = `project-modal-${index}`;
+                const interactive = project.link || discover;
 
                 return (
                   <div class="group relative">
-                    <Component
-                      {...linkProps}
+                    <div
                       class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
-                        project.link
+                        interactive
                           ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
                           : ""
                       }`}
                     >
                       {project.link && (
-                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${project.name} repository`}
+                          class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-10 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white shadow-md transition-all duration-300 group-hover:bg-gray-700"
+                        >
                           <svg
                             class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                             fill="none"
@@ -55,10 +73,73 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                               d="M7 17L17 7M17 7H7M17 7V17"
                             />
                           </svg>
-                        </div>
+                        </a>
                       )}
 
                       <div class="space-y-4">
+                        {preview && preview.isVideo && (
+                          <div class="preview-video group/preview relative w-full aspect-video overflow-hidden rounded-xl border border-gray-200 bg-black">
+                            <video
+                              class="w-full h-full object-cover"
+                              src={preview.src}
+                              poster={preview.poster}
+                              muted
+                              loop
+                              playsinline
+                              preload="metadata"
+                              aria-label={`${project.name} preview`}
+                            />
+                            <button
+                              type="button"
+                              class="preview-play absolute inset-0 flex items-center justify-center bg-gray-900/0 transition-colors duration-300 group-hover/preview:bg-gray-900/40 cursor-pointer"
+                              aria-label={`Play ${project.name} video with sound`}
+                            >
+                              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white/90 text-gray-900 shadow-lg opacity-0 scale-90 transition-all duration-300 group-hover/preview:opacity-100 group-hover/preview:scale-100">
+                                <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </span>
+                            </button>
+                            <span class="preview-badge absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-gray-900/70 text-white text-xs font-mono pointer-events-none">
+                              {preview.count > 1 ? `${preview.count} items` : "Preview — click for sound"}
+                            </span>
+                          </div>
+                        )}
+
+                        {preview && !preview.isVideo && (
+                          <button
+                            type="button"
+                            class="discover-btn group/preview relative block w-full aspect-video overflow-hidden rounded-xl border border-gray-200 bg-gray-100 cursor-pointer"
+                            data-project-modal={modalId}
+                            aria-haspopup="dialog"
+                            aria-label={`Discover ${project.name}`}
+                          >
+                            <img
+                              src={preview.src}
+                              alt={`${project.name} preview`}
+                              loading="lazy"
+                              class="w-full h-full object-cover transition-transform duration-500 group-hover/preview:scale-105"
+                            />
+                            <div class="absolute inset-0 flex items-center justify-center bg-gray-900/0 transition-colors duration-300 group-hover/preview:bg-gray-900/40">
+                              <span class="flex items-center justify-center w-14 h-14 rounded-full bg-white/90 text-gray-900 shadow-lg opacity-0 scale-90 transition-all duration-300 group-hover/preview:opacity-100 group-hover/preview:scale-100">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                                  />
+                                </svg>
+                              </span>
+                            </div>
+                            {preview.count > 1 && (
+                              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-gray-900/70 text-white text-xs font-mono">
+                                {preview.count} items
+                              </span>
+                            )}
+                          </button>
+                        )}
+
                         <div>
                           <span
                             class="text-sm font-mono"
@@ -66,32 +147,150 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
                           >
                             0{index + 1}
                           </span>
-                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
+                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1 pr-12 sm:pr-14 md:pr-16">
                             {project.name}
                           </h3>
                         </div>
 
-                        <p
-                          class={`text-base sm:text-lg text-gray-600 leading-relaxed ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
-                        >
+                        <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
                           {project.description}
                         </p>
 
                         {project.skills && project.skills.length > 0 && (
                           <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
                             {project.skills.map((skill) => (
-                              <span
-                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-800" : ""
-                                }`}
-                              >
+                              <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 group-hover:bg-gray-800">
                                 {skill}
                               </span>
                             ))}
                           </div>
                         )}
+
+                        {discover && (
+                          <div class="pt-2">
+                            <button
+                              type="button"
+                              class="discover-btn discover-pill inline-flex items-center gap-1.5 text-sm font-mono font-medium rounded-lg border px-3 py-1.5 transition-all duration-300 hover:text-white cursor-pointer"
+                              style={`color: ${siteConfig.accentColor}; border-color: ${siteConfig.accentColor}; --accent: ${siteConfig.accentColor};`}
+                              data-project-modal={modalId}
+                              aria-haspopup="dialog"
+                            >
+                              Discover
+                              <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+                        )}
                       </div>
-                    </Component>
+                    </div>
+
+                    {discover && (
+                      <div
+                        id={modalId}
+                        class="project-modal hidden fixed inset-0 z-50 items-center justify-center p-4 sm:p-6"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label={`${project.name} details`}
+                      >
+                        <div class="modal-backdrop absolute inset-0 bg-gray-900/60 backdrop-blur-sm" />
+                        <div class="relative z-10 w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white rounded-2xl border border-gray-200 shadow-2xl">
+                          <div class="sticky top-0 flex items-start justify-between gap-4 bg-white/95 backdrop-blur px-5 sm:px-8 pt-5 sm:pt-8 pb-4 border-b border-gray-100">
+                            <h3 class="text-xl sm:text-2xl font-bold text-gray-900 pr-2">
+                              {project.name}
+                            </h3>
+                            <button
+                              type="button"
+                              class="modal-close flex-shrink-0 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-gray-900 hover:text-white transition-all duration-200 cursor-pointer"
+                              aria-label="Close"
+                            >
+                              <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M6 18L18 6M6 6l12 12"
+                                />
+                              </svg>
+                            </button>
+                          </div>
+
+                          <div class="px-5 sm:px-8 py-6 space-y-6">
+                            {project.details && (
+                              <p class="modal-details text-base text-gray-600 leading-relaxed whitespace-pre-line">
+                                {project.details}
+                              </p>
+                            )}
+
+                            {project.report && (
+                              <a
+                                href={project.report}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-mono font-medium text-white shadow-sm transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                                style={`background-color: ${siteConfig.accentColor}`}
+                              >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                  />
+                                </svg>
+                                View full report (PDF)
+                              </a>
+                            )}
+
+                            {project.media && project.media.length > 0 && (
+                              <div class="space-y-6">
+                                {project.media.map((item) => (
+                                  <figure class="space-y-2">
+                                    {item.type === "video" ? (
+                                      <video
+                                        class="w-full rounded-xl border border-gray-200 bg-black"
+                                        controls
+                                        preload="metadata"
+                                        poster={item.poster}
+                                      >
+                                        <source src={item.src} />
+                                      </video>
+                                    ) : (
+                                      <img
+                                        class="w-full rounded-xl border border-gray-200"
+                                        src={item.src}
+                                        alt={item.caption ?? project.name}
+                                        loading="lazy"
+                                      />
+                                    )}
+                                    {item.caption && (
+                                      <figcaption class="text-sm text-gray-500 font-mono">
+                                        {item.caption}
+                                      </figcaption>
+                                    )}
+                                  </figure>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -102,3 +301,136 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
     </section>
   )
 }
+
+<style>
+  .discover-pill:hover {
+    background-color: var(--accent);
+  }
+  .project-modal.is-open {
+    display: flex;
+  }
+</style>
+
+<script>
+  function setupProjectModals() {
+    const openButtons = document.querySelectorAll<HTMLElement>(".discover-btn");
+    const modals = document.querySelectorAll<HTMLElement>(".project-modal");
+
+    const renderMath = (modal: HTMLElement) => {
+      if (modal.dataset.mathRendered === "true") return;
+      const fn = (window as any).renderMathInElement;
+      if (typeof fn !== "function") return; // KaTeX not loaded yet; retry on next open
+      fn(modal, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true },
+        ],
+        throwOnError: false,
+      });
+      modal.dataset.mathRendered = "true";
+    };
+
+    const closeModal = (modal: HTMLElement) => {
+      modal.classList.remove("is-open");
+      document.body.style.overflow = "";
+      modal.querySelectorAll("video").forEach((v) => v.pause());
+    };
+
+    const openModal = (modal: HTMLElement) => {
+      modal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      document
+        .querySelectorAll<HTMLVideoElement>(".preview-video video")
+        .forEach((v) => v.pause());
+      renderMath(modal);
+    };
+
+    openButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = btn.getAttribute("data-project-modal");
+        if (!id) return;
+        const modal = document.getElementById(id);
+        if (modal) openModal(modal);
+      });
+    });
+
+    modals.forEach((modal) => {
+      modal
+        .querySelector(".modal-close")
+        ?.addEventListener("click", () => closeModal(modal));
+      modal
+        .querySelector(".modal-backdrop")
+        ?.addEventListener("click", () => closeModal(modal));
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      modals.forEach((modal) => {
+        if (modal.classList.contains("is-open")) closeModal(modal);
+      });
+    });
+  }
+
+  function setupPreviewVideos() {
+    const wraps = document.querySelectorAll<HTMLElement>(".preview-video");
+
+    wraps.forEach((wrap) => {
+      if (wrap.dataset.previewReady === "true") return;
+      wrap.dataset.previewReady = "true";
+
+      const video = wrap.querySelector("video");
+      const overlay = wrap.querySelector<HTMLElement>(".preview-play");
+      const badge = wrap.querySelector<HTMLElement>(".preview-badge");
+      if (!video) return;
+
+      // Loop silently while visible so the card shows a live preview.
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                video.pause();
+              } else if (video.dataset.activated !== "true") {
+                video.play().catch(() => {});
+              }
+            });
+          },
+          { threshold: 0.25 },
+        );
+        observer.observe(wrap);
+      } else {
+        video.play().catch(() => {});
+      }
+
+      // Click plays it here, in the card: full playback with sound and controls.
+      overlay?.addEventListener("click", () => {
+        document
+          .querySelectorAll<HTMLVideoElement>(".preview-video video")
+          .forEach((other) => {
+            if (other !== video) other.pause();
+          });
+
+        video.dataset.activated = "true";
+        video.loop = false;
+        video.muted = false;
+        video.controls = true;
+        video.currentTime = 0;
+        video.play().catch(() => {});
+
+        overlay.classList.add("hidden");
+        badge?.classList.add("hidden");
+      });
+    });
+  }
+
+  setupProjectModals();
+  setupPreviewVideos();
+  document.addEventListener("astro:page-load", () => {
+    setupProjectModals();
+    setupPreviewVideos();
+  });
+</script>
