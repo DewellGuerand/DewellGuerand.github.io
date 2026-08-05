@@ -33,6 +33,12 @@ const { Content } = await render(entry);
       <h1 class="note-title">{note.title}</h1>
     </header>
 
+    <div class="note-actions">
+      <button type="button" class="note-print-button" data-print data-title={note.title}>
+        Télécharger en PDF
+      </button>
+    </div>
+
     <article class="note-body">
       <Content />
     </article>
@@ -66,5 +72,20 @@ const { Content } = await render(entry);
     const timer = setInterval(() => {
       if (renderMath() || ++attempts > 40) clearInterval(timer);
     }, 50);
+  }
+
+  // No PDF library: the browser's own print-to-PDF does the rendering, driven
+  // by the @media print rules in notes.css.
+  const printButton = document.querySelector<HTMLElement>("[data-print]");
+  const noteTitle = printButton?.dataset.title;
+
+  if (printButton && noteTitle) {
+    const pageTitle = document.title;
+    // Browsers name the saved file after document.title, so borrow it for the
+    // print and hand it back afterwards. Using beforeprint/afterprint rather
+    // than wrapping the print() call means Ctrl+P gets the same filename.
+    window.addEventListener("beforeprint", () => { document.title = noteTitle; });
+    window.addEventListener("afterprint", () => { document.title = pageTitle; });
+    printButton.addEventListener("click", () => window.print());
   }
 </script>

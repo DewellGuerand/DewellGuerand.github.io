@@ -175,3 +175,95 @@
 }
 
 .note-back:hover { color: #111827; }
+
+/* --- Print / "Download PDF" -------------------------------------------- */
+
+.note-actions {
+  margin-bottom: 2rem;
+}
+
+.note-print-button {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.note-print-button:hover { background: #374151; }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  /* Site chrome has no business on paper. */
+  header#header,
+  footer,
+  .note-back,
+  .note-actions {
+    display: none !important;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .extras-page {
+    max-width: none;
+    margin: 0;
+    padding: 0 !important;
+  }
+
+  .note-body,
+  .note-title,
+  .note-category {
+    color: #000 !important;
+  }
+
+  .note-body a {
+    color: #000 !important;
+    text-decoration: underline;
+  }
+
+  /* Make external URLs recoverable on paper; internal links stay clean. */
+  .note-body a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  .note-body pre,
+  .note-body code {
+    background: #fff !important;
+    border-color: #999 !important;
+  }
+
+  .note-body pre,
+  .note-body table,
+  .note-body figure,
+  .note-body img,
+  .note-body blockquote,
+  .katex-display {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* A heading stranded at the foot of a page is a formatting bug. */
+  .note-body h1,
+  .note-body h2,
+  .note-body h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .note-header {
+    border-bottom: 1px solid #000;
+  }
+}
