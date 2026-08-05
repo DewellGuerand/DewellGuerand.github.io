@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { toNote } from "../../lib/extras";
+import "../../styles/notes.css";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("extras");
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const note = toNote(entry);
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+  title={`${note.title} - Extras`}
+  description={note.description ?? `${note.title} - ${note.categoryLabel}`}
+  canonical={`https://gueranddewell.com${note.href}`}
+>
+  <Header variant="page" />
+  <main class="extras-page" style="padding-top: var(--header-h, 4rem)">
+    <a class="note-back" href="/extras">&larr; Extras</a>
+
+    <header class="note-header">
+      <div class="note-category">{note.categoryLabel}</div>
+      <h1 class="note-title">{note.title}</h1>
+    </header>
+
+    <article class="note-body">
+      <Content />
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  // KaTeX is loaded with `defer` in BaseLayout, so it may not be ready when
+  // this runs. Poll briefly rather than racing it — same approach as
+  // Projects.astro, which renders math inside modals.
+  function renderMath() {
+    const fn = (window as any).renderMathInElement;
+    const article = document.querySelector(".note-body");
+    if (typeof fn !== "function" || !article) return false;
+    fn(article, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "$", right: "$", display: false },
+        { left: "\\(", right: "\\)", display: false },
+      ],
+      ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+      throwOnError: false,
+    });
+    return true;
+  }
+
+  if (!renderMath()) {
+    let attempts = 0;
+    const timer = setInterval(() => {
+      if (renderMath() || ++attempts > 40) clearInterval(timer);
+    }, 50);
+  }
+</script>
