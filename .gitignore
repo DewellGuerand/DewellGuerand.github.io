@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Obsidian vault state (per-machine, not content)
+src/content/extras/.obsidian/workspace.json
+src/content/extras/.obsidian/workspace-mobile.json
