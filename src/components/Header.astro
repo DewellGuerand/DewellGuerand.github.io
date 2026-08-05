@@ -1,6 +1,16 @@
 ---
 import { siteConfig } from "../config";
 
+interface Props {
+  variant?: "home" | "page";
+}
+
+const { variant = "home" } = Astro.props;
+
+// Section links are in-page anchors on the homepage. Everywhere else those
+// sections do not exist, so they have to navigate home first.
+const sectionHref = (id: string) => (variant === "home" ? `#${id}` : `/#${id}`);
+
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 const hasExperience = siteConfig.experience && siteConfig.experience.length > 0;
 const hasEducation = siteConfig.education && siteConfig.education.length > 0;
@@ -19,7 +29,7 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
         hasProjects && (
           <li>
             <a
-              href="#projects"
+              href={sectionHref("projects")}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Projects
@@ -31,7 +41,7 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
         hasExperience && (
           <li>
             <a
-              href="#experience"
+              href={sectionHref("experience")}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Experience
@@ -43,7 +53,7 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
         hasEducation && (
           <li>
             <a
-              href="#education"
+              href={sectionHref("education")}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Education
@@ -55,7 +65,7 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
         hasAchievements && (
           <li>
             <a
-              href="#achievements"
+              href={sectionHref("achievements")}
               class="text-gray-700 hover:text-black transition-colors font-medium"
             >
               Achievements
@@ -63,6 +73,14 @@ const hasAchievements = siteConfig.achievements && siteConfig.achievements.lengt
           </li>
         )
       }
+      <li>
+        <a
+          href="/extras"
+          class="text-gray-700 hover:text-black transition-colors font-medium"
+        >
+          Extras
+        </a>
+      </li>
       <li>
         <a
           href="/cv.pdf"
