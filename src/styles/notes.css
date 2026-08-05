@@ -1,0 +1,55 @@
+/* Shared shell for every /extras page. */
+.extras-page {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.extras-group + .extras-group {
+  margin-top: 2.5rem;
+}
+
+.extras-group-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+}
+
+.extras-card {
+  display: block;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.extras-card:hover {
+  border-color: var(--accent-color, #3b82f6);
+  transform: translateY(-2px);
+}
+
+.extras-card-title {
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.extras-card-description {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.extras-empty {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
