@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Dewell Guerand",
-  title: "MEng Student in Applied Mathematics | Quantitative Finance",
+  title: "MEng Student in Applied Mathematics",
   description:
     "Portfolio of Dewell Guerand – engineering student at UCLouvain (EPL) and CentraleSupélec, specialising in Applied Mathematics and quantitative finance.",
   accentColor: "#374151",
@@ -10,7 +10,7 @@ export const siteConfig = {
     github: "https://github.com/DewellGuerand",
   },
   aboutMe:
-    "Engineering student specialising in Applied Mathematics at UCLouvain (EPL), pursuing a T.I.M.E double degree at CentraleSupélec (Université Paris-Saclay) starting 2026. Passionate about quantitative finance, mathematical modelling, and machine learning. Graduated Cum Laude at BEng level and currently serving as Quantitative Analyst at the LSM Investment Club.",
+"Engineering student specialising in Applied Mathematics, passionate about applying the tools learned during my studies to real-world problems. I love having an impact when I do something and seeing tangible results. I have a strong interest in Machine Learning, Finite Element Methods, and Stochastic Differential Equations.",
   skillGroups: [
     {
       label: "Programming",
