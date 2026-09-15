@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.8)  15 SEP 2026 09:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.8)  15 SEP 2026 10:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/guera/Bureau/Projet/Site_cv/DewellGuerand.github.io/public/cv.tex
-(c:/Users/guera/Bureau/Projet/Site_cv/DewellGuerand.github.io/public/cv.tex
+**"c:/Users/guera/Bureau/Projet/Site_cv/DewellGuerand.github.io/public/cv copy.tex"
+(c:/Users/guera/Bureau/Projet/Site_cv/DewellGuerand.github.io/public/cv copy.tex
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-09>
 (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -389,8 +389,8 @@ Package: charter 2020/03/25 PSNFSS-v9.3 (P.Dyballa)
 LaTeX Font Info:    Trying to load font information for T1+bch on input line 120.
  (C:\Users\guera\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1bch.fd
 File: t1bch.fd 2004/10/18 font definitions for T1/bch.
-) (cv.aux)
-\openout1 = `cv.aux'.
+) (cv copy.aux)
+\openout1 = `"cv copy.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
 LaTeX Font Info:    ... okay on input line 120.
@@ -498,24 +498,24 @@ Package lastpage Warning: \@currentHpage is
 (lastpage)                just "page." without number,
 (lastpage)                \lastpage@lastpageHy is now let empty.
 
-(cv.aux)
+(cv copy.aux)
  ***********
 LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-10-09>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15446 strings out of 468080
- 262937 string characters out of 5425772
- 697665 words of memory out of 5000000
- 43912 multiletter control sequences out of 15000+600000
+ 15447 strings out of 468080
+ 263031 string characters out of 5425772
+ 697679 words of memory out of 5000000
+ 43913 multiletter control sequences out of 15000+600000
  666103 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,7n,79p,456b,459s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,7n,79p,605b,459s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchb8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchr8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/bitstrea/charter/bchri8a.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/guera/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy9.pfb>
-Output written on cv.pdf (1 page, 59137 bytes).
+Output written on "cv copy.pdf" (1 page, 60612 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
+ 71 PDF objects out of 1000 (max. 8388607)
  7 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

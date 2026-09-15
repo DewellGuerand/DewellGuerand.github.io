@@ -1,3 +1,22 @@
+/* Extras pages are often short, so pin the footer to the bottom of the
+   viewport instead of letting it float up under the content. */
+body.extras-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.extras-layout .extras-page {
+  flex: 1 0 auto;
+  /* The `margin: 0 auto` below would otherwise suppress the flex stretch and
+     shrink the column to fit its content. */
+  width: 100%;
+}
+
+body.extras-layout > footer {
+  flex-shrink: 0;
+}
+
 /* Shared shell for every /extras page. */
 .extras-page {
   max-width: 72ch;
@@ -5,8 +24,19 @@
   padding: 2rem 1.25rem 4rem;
 }
 
-.extras-group + .extras-group {
-  margin-top: 2.5rem;
+/* The menu page needs room to lay categories out side by side; note pages keep
+   the narrow reading column set by .extras-page. */
+.extras-index {
+  max-width: 68rem;
+}
+
+/* Categories flow left to right and wrap, each column growing downwards as
+   notes are added to it. */
+.extras-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem 1.5rem;
+  align-items: start;
 }
 
 .extras-group-title {
@@ -165,6 +195,15 @@
 }
 
 .note-body th { background: #f9fafb; font-weight: 600; }
+
+/* Display math is now rendered at build time, so a long equation is a real
+   fixed-width box. Let it scroll inside its own container rather than pushing
+   the page sideways on narrow screens. */
+.note-body .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
 
 .note-back {
   display: inline-block;
